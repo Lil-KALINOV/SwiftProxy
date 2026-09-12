@@ -46,14 +46,24 @@ from utils.update_check import (
 )
 from ui.qt.qt_runtime import ensure_qt_thread, qt_run_dialog, quit_qt
 from ui.qt.qt_theme import qt_theme_for_platform
-from ui.qt.qt_form import (
-    install_tray_config_buttons, install_tray_config_form,
-    populate_first_run_window,
-    validate_config_form,
-)
-from ui.qt.qt_dialogs import (
-    QtDialog, ask_qt_yes_no, show_qt_error,
-)
+try:
+    from ui.qt.qt_form import (
+        install_tray_config_buttons, install_tray_config_form,
+        populate_first_run_window, validate_config_form,
+    )
+    from ui.qt.qt_dialogs import (
+        QtDialog, ask_qt_yes_no, show_qt_error,
+    )
+except ImportError:
+    # Qt (PySide6) is unavailable on Python 3.8 / 32-bit Win7 builds;
+    # every caller guards on ensure_qt_thread() first.
+    install_tray_config_buttons = None
+    install_tray_config_form = None
+    populate_first_run_window = None
+    validate_config_form = None
+    QtDialog = None
+    ask_qt_yes_no = None
+    show_qt_error = None
 from ui.i18n import set_language, t
 
 CONFIG_DIALOG_SIZE = (480, 620)

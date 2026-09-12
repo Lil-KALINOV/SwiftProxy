@@ -94,7 +94,7 @@ dependencies = [
 
     "Pillow==12.1.1; (platform_system != 'Windows' or python_version >= '3.9') and platform_system != 'Darwin'",
 
-"PySide6>=6.6.0",
+"PySide6>=6.6.0; python_version >= '3.9'",
 
 
 

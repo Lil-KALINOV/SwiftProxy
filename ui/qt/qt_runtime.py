@@ -25,7 +25,11 @@ def ensure_qt_thread(mode: str = "auto") -> bool:
     if _qt_ready.is_set():
         return _qt_app is not None
 
-    from PySide6.QtWidgets import QApplication
+    try:
+        from PySide6.QtWidgets import QApplication
+    except ImportError:
+        log.info("PySide6 not installed; Qt UI disabled")
+        return False
 
     if QApplication.instance() is not None and _qt_app is None:
         _qt_app = QApplication.instance()

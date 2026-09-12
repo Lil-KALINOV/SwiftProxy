@@ -307,7 +307,7 @@ jobs:
         run: |
           python3.12 -m pip check
           python3.12 -m py_compile macos.py
-          python3.12 -c "import AppKit, customtkinter, macos, pystray, tkinter"
+          python3.12 -c "import AppKit, PySide6, macos, pystray, tkinter"
 
       - name: Create macOS icon
         run: |
@@ -324,7 +324,7 @@ jobs:
             'dist/SwiftProxy.app/Contents/Info.plist')"
           test -n "$ICON_FILE"
           test -f "dist/SwiftProxy.app/Contents/Resources/$ICON_FILE"
-          test -d "dist/SwiftProxy.app/Contents/Resources/customtkinter"
+          test -d "dist/SwiftProxy.app/Contents/Resources/PySide6"
 
           found=0
           while IFS= read -r -d '' file; do

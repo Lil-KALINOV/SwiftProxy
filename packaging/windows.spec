@@ -7,10 +7,14 @@ from PyInstaller.utils.hooks import collect_data_files
 
 block_cipher = None
 
-# PySide6 ships Qt plugins + translations that must be bundled
+# PySide6 ships Qt plugins + translations that must be bundled.
+# It is optional (not available for Python 3.8 / 32-bit Win7 builds).
 from PyInstaller.utils.hooks import collect_all
 
-qt_datas, qt_binaries, qt_hidden = collect_all('PySide6')
+try:
+    qt_datas, qt_binaries, qt_hidden = collect_all('PySide6')
+except Exception:
+    qt_datas, qt_binaries, qt_hidden = [], [], []
 certifi_datas = collect_data_files('certifi')
 
 _i18n_path = os.path.join(os.path.dirname(SPEC), os.pardir, 'ui', 'i18n')
