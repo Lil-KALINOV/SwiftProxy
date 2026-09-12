@@ -1,7 +1,7 @@
 import sys
 import os
 
-from PyInstaller.utils.hooks import collect_all
+from PyInstaller.utils.hooks import collect_all, collect_data_files
 
 block_cipher = None
 
