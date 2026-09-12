@@ -301,7 +301,7 @@ jobs:
 
           python3.12 -m pip install --no-deps wheelhouse/universal2/*.whl
           python3.12 -m pip install .
-          python3.12 -m pip install pyinstaller==6.13.0
+          python3.12 -m pip install pyinstaller==6.22.2
 
       - name: Validate macOS GUI dependencies
         run: |
