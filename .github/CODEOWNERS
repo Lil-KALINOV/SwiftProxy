@@ -1,0 +1,11 @@
+# Default owners
+* @LilKALINOV
+
+# Automation and repository settings
+.github/** @LilKALINOV
+
+# Documentation
+docs/** @LilKALINOV
+
+# Core proxy implementation
+proxy/** @LilKALINOV
